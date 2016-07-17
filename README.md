@@ -1,8 +1,6 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Project Name}
+# dotfiles
 
-Collection of various configuration files
+Collection of various configuration files used by Adam Whitlock. Nothing too fancy, but generic enough to be used across various hosts.
 
 ## Installation
 
@@ -31,6 +29,3 @@ Adam Whitlock
 ## License
 
 GNU General Public License v3 (GPLv3)
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
