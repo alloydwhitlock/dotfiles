@@ -6,3 +6,4 @@ set history=200
 set ruler
 set paste
 set cursorline
+colorscheme molokai
