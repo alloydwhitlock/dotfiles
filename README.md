@@ -20,6 +20,8 @@ dotfiles from the appropriate user home location to the downloaded repository.
 
 ## History
 
+09.08.2016 - Modified Bash prompt to include relative directory path
+08.10.2016 - Added Molokai theme for Vim
 07.17.2016 - Creation and initial commit of basic dotfiles
 
 ## Credits

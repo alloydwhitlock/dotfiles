@@ -4,8 +4,10 @@
 
 IGNOREEOF=3   # Shell only exists after the 3rd consecutive Ctrl-D
 
+# Prompt Modification
+export PS1="[\[$(tput sgr0)\]\[\033[38;5;1m\]\$?\[$(tput sgr0)\]\[\033[38;5;15m\]] \[$(tput sgr0)\]\[\033[38;5;5m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;4m\][\w]\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
 
-# Custom functions
+# Custom Functions
 
 decode_pig () {
     echo "$1" | base64 -d ; echo
