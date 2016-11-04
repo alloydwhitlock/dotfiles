@@ -1,0 +1,51 @@
+[user]
+  name = Adam Whitlock
+  email = adam@adamwhitlock.com
+[push]
+  default = current
+
+[color]
+  ui = auto
+  diff = auto
+  status = auto
+  branch = auto
+  showbranch = auto
+  interactive = always
+
+[color "branch"]
+  current = green bold
+  local = green
+  remote = red bold
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = red
+  changed = green
+  untracked = cyan
+
+[color "sh"]
+  branch = yellow
+
+[log]
+  decorate = full
+[merge]
+  tool = vimdiff
+  log = true
+
+[diff]
+  tool = gvimdiff
+  renames = copies
+  # Tell git diff to use mnemonic prefixes (index, work tree, commit, object) instead of the standard a and b notation
+  mnemonicprefix = true
+
+[difftool]
+  prompt = true
+
+[help]
+  autocorrect = 1
+
