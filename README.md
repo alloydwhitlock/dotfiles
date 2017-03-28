@@ -20,10 +20,12 @@ dotfiles from the appropriate user home location to the downloaded repository.
 
 ## History
 
-11.04.2016 - Added history options, .bash_profile, .gitconfig
-09.08.2016 - Modified Bash prompt to include relative directory path
-08.10.2016 - Added Molokai theme for Vim
-07.17.2016 - Creation and initial commit of basic dotfiles
+* 03.28.2017 - Fixed .tmux.conf to support newer tmux directives for mouse & UDF
+* 03.27.2017 - Added Vundle plugin support, .vimrc improvements for Python development
+* 11.04.2016 - Added history options, .bash_profile, .gitconfig
+* 09.08.2016 - Modified Bash prompt to include relative directory path
+* 08.10.2016 - Added Molokai theme for Vim
+* 07.17.2016 - Creation and initial commit of basic dotfiles
 
 ## Credits
 
