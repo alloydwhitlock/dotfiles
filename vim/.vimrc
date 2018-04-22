@@ -37,22 +37,3 @@ if 'VIRTUAL_ENV' in os.environ:
   execfile(activate_this, dict(__file__=activate_this))
 EOF
 
-"Enable Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-"Vundle needs to manage Vundle
-Plugin 'gmarik/Vundle.vim'
-
-"Vundle plugins begin
-
-Plugin 'vim-scripts/indentpython.vim'
-Bundle 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-
-
-"Vundle plugins end
-
-call vundle#end()
-filetype plugin indent on

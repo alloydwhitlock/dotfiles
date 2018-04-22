@@ -6,13 +6,10 @@ IGNOREEOF=3   # Shell only exists after the 3rd consecutive Ctrl-D
 
 
 ## prompt modification
-export PS1="[\[$(tput sgr0)\]\[\033[38;5;1m\]\$?\[$(tput sgr0)\]\[\033[38;5;15m\]] \[$(tput sgr0)\]\[\033[38;5;5m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput sgr0)\]\[\033[38;5;15m\]:\[$(tput sgr0)\]\[\033[38;5;4m\][\w]\[$(tput sgr0)\]\[\033[38;5;6m\]:\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
-
 
 ## editor options
 
-# svn
-
+# svn options
 export SVN_EDITOR=vim
 
 
@@ -53,7 +50,7 @@ ps1_git_branch() {
 
 ## custom aliases
 
-alias projects="cd ~/src"
+alias projects="cd ~/Source"
 alias cleanrepo="git reset --hard origin/master"
 alias diffrepo="git diff HEAD^ HEAD"
 alias revertcommit="git reset --soft HEAD~1"
