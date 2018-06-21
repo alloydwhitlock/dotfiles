@@ -7,6 +7,9 @@ IGNOREEOF=3   # Shell only exists after the 3rd consecutive Ctrl-D
 
 ## prompt modification
 
+## import local bashrc_local which shouldn't be pushed to git
+[[ -f ~/.bashrc_local ]] && source ~/.bashrc_local
+
 ## editor options
 
 # svn options
