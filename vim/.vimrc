@@ -27,6 +27,9 @@ let python_highlight_all = 1
 "Remove all trailing whitespaces
 autocmd BufWritePre * %s/\s\+$//e
 
+"Write file as sudo
+cnoremap w!! w !sudo tee > /dev/null %
+
 "python with virtualenv support
 py << EOF
 import os
