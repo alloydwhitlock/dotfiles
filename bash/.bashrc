@@ -127,6 +127,7 @@ ps1_git_branch() {
 
 alias projects="cd ~/Source"
 alias cleanrepo="git reset --hard origin/master"
+alias fuckrepo="cleanrepo"
 alias diffrepo="git diff HEAD^ HEAD"
 alias revertcommit="git reset --soft HEAD~1"
 alias prettygit="git log --oneline --decorate --graph --all"

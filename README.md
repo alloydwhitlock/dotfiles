@@ -1,6 +1,6 @@
 
 # dotfiles
-Collection of various configuration files used by Adam Whitlock. 
+Collection of various configuration files used by Adam Whitlock.
 
 ## Installation
  1. Clone the dotfiles repository
@@ -11,7 +11,7 @@ Collection of various configuration files used by Adam Whitlock.
 	 a. On Mac OS X, using [Homebrew](https://brew.sh) to install GNU Stow is probably the easiest option
 	 ```
 	 brew install stow
-	 ``` 
+	 ```
  4. Run `stow` commands to create symlinks for each of the folders containing .dotfiles
 
 ### GNU Stow Example
@@ -36,10 +36,11 @@ Processing tasks... done
 5. Submit a pull request
 
 ## History
+* 2021.01.18 - Added .bashrc options for modernizing (Pop!\_OS compatability), .vimrc cleanup. Removed unused Molokai theme
 * 2018.04.22 - Removed Vundle plugin support from dotfiles, added show/hide status for .tmux.conf, notes for using GNU Stow (thanks to [Kyle Reid](https://github.com/kreid/dotfiles) for the inspiration)
 * 2017.03.28 - Fixed .tmux.conf to support newer tmux directives for mouse & UDF
 * 2017.03.27 - Added Vundle plugin support, .vimrc improvements for Python development
-* 2016.11.04 - Added history options, .bash_profile, .gitconfig
+* 2016.11.04 - Added history options, .bash\_profile, .gitconfig
 * 2016.09.08 - Modified Bash prompt to include relative directory path
 * 2016.08.10 - Added Molokai theme for Vim
 * 2016.07.17 - Creation and initial commit of basic dotfiles
