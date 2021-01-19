@@ -125,7 +125,15 @@ ps1_git_branch() {
 
 ## custom aliases
 
-alias projects="cd ~/Source"
+# alias for projects directory
+if [ -d ~/Source ]; then
+  alias projects="cd ~/Source"
+elif [ -d ~/Projects ]; then
+  alias projects="cd ~/Projects"
+else
+  alias projects=""
+fi
+
 alias cleanrepo="git reset --hard origin/master"
 alias fuckrepo="cleanrepo"
 alias diffrepo="git diff HEAD^ HEAD"

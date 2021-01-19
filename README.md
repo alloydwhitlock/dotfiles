@@ -36,7 +36,7 @@ Processing tasks... done
 5. Submit a pull request
 
 ## History
-* 2021.01.18 - Added .bashrc options for modernizing (Pop!\_OS compatability), .vimrc cleanup. Removed unused Molokai theme
+* 2021.01.18 - Added .bashrc options for modernizing (Pop!\_OS compatability), .vimrc cleanup. Removed unused Molokai theme, added Alacritty config
 * 2018.04.22 - Removed Vundle plugin support from dotfiles, added show/hide status for .tmux.conf, notes for using GNU Stow (thanks to [Kyle Reid](https://github.com/kreid/dotfiles) for the inspiration)
 * 2017.03.28 - Fixed .tmux.conf to support newer tmux directives for mouse & UDF
 * 2017.03.27 - Added Vundle plugin support, .vimrc improvements for Python development
