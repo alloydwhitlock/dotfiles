@@ -1,4 +1,6 @@
-" https://github.com/alloydwhitlock/dotfiles
+""" https://github.com/alloydwhitlock/dotfiles
+
+"" basic vimrc options, works without plugins
 
 " generic, good to have default settings
 set encoding=utf-8
@@ -11,15 +13,18 @@ set autoindent
 set expandtab
 set shiftwidth=4
 
+" color theme
+colorscheme elflord
+
 " visualization settings
 set bs=indent,eol,start
 set number
 set ruler
 set cursorline
 set showmatch
-colorscheme elflord
 
 " syntax-specific settings
+syntax on
 syntax enable
 let python_highlight_all = 1
 
