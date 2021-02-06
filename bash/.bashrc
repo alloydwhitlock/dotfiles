@@ -141,7 +141,7 @@ alias revertcommit="git reset --soft HEAD~1"
 alias prettygit="git log --oneline --decorate --graph --all"
 alias tmux="tmux attach -t whitlock || tmux new -s whitlock"
 alias emacs="emacs -nw"
-
+alias tree="tree -F -a --dirsfirst"
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
