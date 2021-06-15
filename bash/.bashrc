@@ -42,6 +42,9 @@ HISTFILESIZE=20000
 HISTCONTROL=ignoreboth
 
 
+## Add local Python programs to PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 ## command color options
 
 # color ls, grep, fgrep, egrep

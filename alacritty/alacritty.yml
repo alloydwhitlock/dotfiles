@@ -18,9 +18,6 @@ window:
   # multiplier will move N lines for every line scrolled
   multiplier: 3
 
-# point size
-size: 11.0
-
 # Make bold even bolder with this option
 draw_bold_text_with_bright_colors: true
 
