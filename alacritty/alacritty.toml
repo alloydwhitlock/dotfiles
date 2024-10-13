@@ -1,5 +1,5 @@
 # Whitlock Alacritty Configuration
-# Version 2.0
+# Version 2.1
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -36,15 +36,16 @@ title = "terminal"
 dynamic_title = false
 opacity = 0.95
 startup_mode = "Windowed"
+decorations = "Buttonless"
 
 [window.dimensions]
 columns = 120
-lines = 30
+lines = 32
 
 [window.padding]
-x = 4
-y = 4
+x = 10
+y = 10
 
 [scrolling]
-history = 10000
+history = 50000
 multiplier = 3
