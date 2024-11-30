@@ -5,13 +5,46 @@ This repository contains Adam Whitlock's personal home-manager configuration for
 
 ## Package Management
 
-This configuration uses Flox for package management rather than home-manager's package management capabilities. While home-manager handles dotfiles and program configurations, all package installation and updates are managed through Flox commands (`flox install`, `flox update`, etc.). This separation provides more direct control over package management and allows for easier package state management across different systems. Home-manager's package management is intentionally disabled in this setup - if you need to install a new package, use `flox install package-name` instead of adding it to home-manager's configuration. This approach ensures consistent package management through Flox while letting home-manager focus on configuration management.
+This configuration uses Flox for package management rather than home-manager's package management capabilities. While home-manager handles dotfiles and program configurations, all package installation and updates are managed through Flox commands (`flox install`, `flox update`, etc.). This separation provides more direct control over package management and allows for easier package state management across different systems. Home-manager's package management is intentionally disabled in this setup - if you need to install a new package, use `flox install package-name` instead of adding it to home-manager's configuration. 
 
-With that stated, nothing prevents you from using these configurations and Nix packages anyway you want.
+I have added additional documentation for how to use Nix for installing home-manager. With that stated, nothing prevents you from using these configurations and Nix packages anyway you want.
 
 ## Prerequisites
 
-### Install Flox
+You either need to have a working Nix (Nix Packages) setup OR something that can manage the dependencies for Nix. I've provided a couple different options for management. Right now, I'm playing with Flox so the Flox version will work.
+
+
+### Option 1: Install Nix (Standard Setup)
+
+
+1. First, ensure you have Nix installed. If not, install it:
+```bash
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
+
+2. Add the home-manager channel:
+```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+```
+
+3. Install home-manager:
+```bash
+nix-shell '' -A install
+```
+
+4. Restart your shell or source your profile:
+```bash
+. $HOME/.nix-profile/etc/profile.d/nix.sh
+```
+
+5. Verify the installation:
+```bash
+home-manager --version
+```
+
+
+### Option 2: Install Flox (If You Use/Love Flox)
 
 1. Visit [Flox Installation Guide](https://flox.dev/docs/install-flox/) and follow the installation instructions for your operating system.
 
@@ -26,7 +59,7 @@ eval $(flox activate)
 source ~/.bashrc
 ```
 
-### Pulling Configuration via Floxhub
+4. Pulling Configuration via Floxhub (optional)
 
 To use the Flox configuration from FloxHub, you can pull it directly using the following command:
 
@@ -34,7 +67,7 @@ To use the Flox configuration from FloxHub, you can pull it directly using the f
 flox pull alloydwhitlock/default
 ```
 
-### Install Home Manager
+5. SInstall Home Manager
 
 With Flox installed, install home-manager using your default environment:
 ```bash
@@ -42,6 +75,8 @@ flox install home-manager
 ```
 
 ## Configuration Structure
+
+Here's the basic configuration structure, showing how it's setup. This may differ over time from the actual structure:
 
 ```
 ~/.config/home-manager/
@@ -99,12 +134,18 @@ fi
 
 ### First Time Setup
 
-1. Clone this repository:switch
+1. Clone this repository
 ```bash
-git clone <repository-url> ~/.config/home-manager
+git clone <repository-url> ~/.config/dotfiles
 ```
 
-2. Initial switch:
+2. Create a symlink for home-manager
+
+```bash
+ln -s "$HOME/.config/dotfiles/.config/home-manager" "$HOME/.config/home-manager"
+```
+
+3. Initial home-manager build & activation:
 ```bash
 home-manager switch
 ```
