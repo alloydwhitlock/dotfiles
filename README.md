@@ -26,6 +26,14 @@ eval $(flox activate)
 source ~/.bashrc
 ```
 
+### Pulling Configuration via Floxhub
+
+To use the Flox configuration from FloxHub, you can pull it directly using the following command:
+
+```bash
+flox pull alloydwhitlock/default
+```
+
 ### Install Home Manager
 
 With Flox installed, install home-manager using your default environment:
@@ -73,7 +81,7 @@ For work profile:
 `export NIX_PROFILE_NAME=work` 
 
 
-To make this easy, I put this in my `on-activate` section in the default Flox environment, which assumes my work home directory is named a certain way:
+To make this easy, I put this in my `on-activate` section in the default Flox environment. This is present in the FloxHub verison of my default configuration. 
 
 
 #### Flox Snippet
