@@ -8,5 +8,6 @@
     ./programs/git.nix
     ./programs/tmux.nix
     ./programs/vim.nix
+    ./programs/vscode.nix
   ];
 } 
