@@ -22,7 +22,7 @@
       br = "branch";
       ci = "commit";
       df = "diff";
-      fuckrepo = "git reset --hard origin/head";
+      fuckrepo = "reset --hard origin/HEAD";
       lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
     };
 
