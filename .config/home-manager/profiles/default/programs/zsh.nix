@@ -13,7 +13,7 @@
       export ZSH_CUSTOM="$ZSH/custom"
       
       # Configure oh-my-zsh plugins BEFORE sourcing oh-my-zsh
-      plugins=(git docker colorize)
+      plugins=(git branch docker colorize)
     '';
     plugins = [
       {
@@ -43,7 +43,7 @@
       
       # Source oh-my-zsh AFTER plugins are configured
       if [ -f "$ZSH/oh-my-zsh.sh" ]; then
-        ZSH_THEME="robbyrussell"
+        ZSH_THEME="clean"
         source "$ZSH/oh-my-zsh.sh"
       else
         echo "Warning: oh-my-zsh.sh not found"
