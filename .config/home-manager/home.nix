@@ -1,13 +1,16 @@
 { config, pkgs, ... }:
 
+let
+  profile = builtins.getEnv "HM_PROFILE";
+  profilePath =
+    if profile == ""
+    then ./profiles/default
+    else ./profiles + "/${profile}";
+in
 {
-  # Home Manager needs a bit of information about you and the paths it should manage.
-  home.username = "whitlock";
-  home.homeDirectory = "/home/whitlock";
-
   # Import the profile configuration
-  imports = [ 
-    ./profiles
+  imports = [
+    profilePath
   ];
 
   # Let Home Manager install and manage itself.

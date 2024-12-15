@@ -1,4 +1,3 @@
-
 # dotfiles
 
 This repository contains Adam Whitlock's personal home-manager configuration for managing dotfiles and system configurations. 
@@ -67,7 +66,7 @@ To use the Flox configuration from FloxHub, you can pull it directly using the f
 flox pull alloydwhitlock/default
 ```
 
-5. SInstall Home Manager
+5. Install Home Manager
 
 With Flox installed, install home-manager using your default environment:
 ```bash
@@ -106,29 +105,43 @@ The configuration supports multiple profiles:
 
 ### Switching Profiles
 
-If you want to switch profiles, use the NIX_PROFILE_NAME to switch between versions.
+To switch between profiles, use the `HM_PROFILE` environment variable before running home-manager:
 
 For normal use:
-`export NIX_PROFILE_NAME=default` 
-
+```bash
+HM_PROFILE=default home-manager switch
+```
 
 For work profile:
-`export NIX_PROFILE_NAME=work` 
-
-
-To make this easy, I put this in my `on-activate` section in the default Flox environment. This is present in the FloxHub verison of my default configuration. 
-
-
-#### Flox Snippet
+```bash
+HM_PROFILE=work home-manager switch
 ```
-export NIX_PROFILE_NAME="default"
+
+To make this easier, you can add these as aliases to your shell configuration:
+
+```bash
+alias hm-default='HM_PROFILE=default home-manager switch'
+alias hm-work='HM_PROFILE=work home-manager switch'
+```
+
+You can also set it permanently in your shell configuration or use environment detection:
+
+```bash
+# Add to your .bashrc or .zshrc
+export HM_PROFILE="default"
 
 # Check if home directory named/contains "adamwhitlock" or has .work file
 if [[ "$HOME" == *"adamwhitlock"* ]] || [ -f "$HOME/.work" ]; then
-    export NIX_PROFILE_NAME="work"
+    export HM_PROFILE="work"
 fi
 ```
 
+### Profile Detection
+
+To verify which profile is active:
+```bash
+echo $HM_PROFILE
+```
 
 ## Usage
 
@@ -187,7 +200,7 @@ home-manager switch --show-trace
 
 To verify which profile is active:
 ```bash
-echo $NIX_PROFILE_NAME
+echo $HM_PROFILE
 ```
 
 ## Notes
@@ -196,8 +209,6 @@ echo $NIX_PROFILE_NAME
 - Work profile adds to (doesn't replace) the default profile
 - Configuration changes require running `home-manager switch`
 - Keep backups of important configurations before major changes
-
-
 
 ## History
 * 2024.11.29 - Massive rewrite, removed all original configuration files, pushed into using Home Manager (Nix) 

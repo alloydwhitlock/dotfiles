@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  home.username = "whitlock";
+  home.homeDirectory = "/home/whitlock";
+
   imports = [
     ./packages.nix
     ./programs/alacritty.nix
