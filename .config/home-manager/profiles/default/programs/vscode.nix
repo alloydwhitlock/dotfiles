@@ -1,18 +1,19 @@
 {config, pkgs, ...}: {
   nixpkgs.config.allowUnfree = true;  # Enable nonfree packages
-  
+
   programs.vscode = {
     enable = true;
+    package = pkgs.vscodium;
     enableExtensionUpdateCheck = true;
     enableUpdateCheck = true;
     mutableExtensionsDir = false;  # Manage extensions purely through Nix
-    
+
     # Enable settings sync
     userSettings = {
       "settings.sync.enabled" = true;
       "editor.formatOnSave" = true;
       "files.autoSave" = "onFocusChange";
-      
+
       # Python settings
       "python.defaultInterpreterPath" = "${pkgs.python3}/bin/python";
       "python.formatting.provider" = "black";
@@ -31,11 +32,11 @@
         "editor.defaultFormatter" = "ms-python.python";
         "editor.rulers" = [120];
       };
-      
+
       # Go settings
       "go.useLanguageServer" = true;
       "go.formatTool" = "goimports";
-      
+
       # JavaScript/React settings
       "javascript.updateImportsOnFileMove.enabled" = "always";
       "javascript.suggest.autoImports" = true;
@@ -62,8 +63,6 @@
 
       # General
       eamodio.gitlens
-      github.copilot
-      ms-vsliveshare.vsliveshare
 
       # Shell
       mads-hartmann.bash-ide-vscode
