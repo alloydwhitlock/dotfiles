@@ -46,6 +46,9 @@
       "[typescriptreact]" = {
         "editor.defaultFormatter" = "esbenp.prettier-vscode";
       };
+
+      # Set the Nord theme
+      "workbench.colorTheme" = "Nord";
     };
 
     extensions = with pkgs.vscode-extensions; [
@@ -67,6 +70,10 @@
       # Shell
       mads-hartmann.bash-ide-vscode
       timonwong.shellcheck
+
+      # Nord theme
+      arcticicestudio.nord-visual-studio-code
     ];
   };
 }
+
