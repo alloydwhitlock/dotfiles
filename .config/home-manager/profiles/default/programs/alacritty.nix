@@ -36,30 +36,30 @@
         draw_bold_text_with_bright_colors = true;
 
         primary = {
-          background = "0x1b2b34";
+          background = "0x2e3440";
           foreground = "0xd8dee9";
         };
 
         normal = {
-          black = "0x29414f";
-          red = "0xec5f67";
-          green = "0x99c794";
-          yellow = "0xfac863";
-          blue = "0x6699cc";
-          magenta = "0xc594c5";
-          cyan = "0x5fb3b3";
-          white = "0x65737e";
+          black = "0x3b4252";
+          red = "0xbf616a";
+          green = "0xa3be8c";
+          yellow = "0xebcb8b";
+          blue = "0x81a1c1";
+          magenta = "0xb48ead";
+          cyan = "0x88c0d0";
+          white = "0xe5e9f0";
         };
 
         bright = {
-          black = "0x405860";
-          red = "0xec5f67";
-          green = "0x99c794";
-          yellow = "0xfac863";
-          blue = "0x6699cc";
-          magenta = "0xc594c5";
-          cyan = "0x5fb3b3";
-          white = "0xadb5c0";
+          black = "0x4c566a";
+          red = "0xbf616a";
+          green = "0xa3be8c";
+          yellow = "0xebcb8b";
+          blue = "0x81a1c1";
+          magenta = "0xb48ead";
+          cyan = "0x8fbcbb";
+          white = "0xeceff4";
         };
       };
     };
