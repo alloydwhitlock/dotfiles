@@ -1,8 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  homeDir = builtins.getEnv "HOME";
+in
 {
   home.username = "whitlock";
-  home.homeDirectory = "/home/whitlock";
+  home.homeDirectory = homeDir;
 
   imports = [
     ./packages.nix
@@ -15,3 +18,4 @@
     ./programs/zsh.nix
   ];
 }
+
