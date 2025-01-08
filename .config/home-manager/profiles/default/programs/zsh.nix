@@ -8,6 +8,12 @@
         echo "Installing oh-my-zsh..."
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
       fi
+
+      # Source Homebrew if installed
+      if [ -f "/opt/homebrew/bin/brew" ]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      fi
+
       # Ensure ZSH_CUSTOM is set for custom plugins
       export ZSH="$HOME/.oh-my-zsh"
       export ZSH_CUSTOM="$ZSH/custom"
