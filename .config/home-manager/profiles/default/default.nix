@@ -1,12 +1,14 @@
 { config, pkgs, ... }:
-
 let
   homeDir = builtins.getEnv "HOME";
+  userName = let
+    parts = builtins.split "/" homeDir;
+    lastPart = builtins.elemAt parts (builtins.length parts - 1);
+  in lastPart;
 in
 {
-  home.username = "whitlock";
+  home.username = userName;
   home.homeDirectory = homeDir;
-
   imports = [
     ./packages.nix
     ./programs/alacritty.nix
@@ -18,4 +20,3 @@ in
     ./programs/zsh.nix
   ];
 }
-

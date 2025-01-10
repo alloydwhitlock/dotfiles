@@ -1,23 +1,28 @@
 { config, pkgs, ... }:
 
 let
-  # Get the profile name from an environment variable, default to "default"
+  # Get the profile name from an environment variable, if set
   profileName = builtins.getEnv "NIX_PROFILE_NAME";
-
   # Get the home directory from the environment
   homeDir = builtins.getEnv "HOME";
-
-  # Determine the default profile based on the home directory
-  defaultProfile =
-    if homeDir == "/home/whitlock" || homeDir == "/Users/whitlock" then [ ./default/default.nix ]
-    else [];
-
-  # Determine the work profile conditionally based on the home directory or profileName
-  additionalProfile =
-    if homeDir == "/Users/adamwhitlock" || profileName == "work" then [ ./work/default.nix ]
-    else [];
-
+  # Get the username part of the home directory
+  userName = let
+    parts = builtins.split "/" homeDir;
+    lastPart = builtins.elemAt parts (builtins.length parts - 1);
+  in lastPart;
+  
+  # Determine which profile to use based on profile name or username
+  activeProfile = 
+    if profileName != "" then
+      if profileName == "work" then [ ./work/default.nix ]
+      else if profileName == "default" then [ ./default/default.nix ]
+      else throw "Unknown profile name: ${profileName}"
+    else if userName == "adamwhitlock" then [ ./work/default.nix ]
+    else if userName == "whitlock" then [ ./default/default.nix ]
+    else throw "Unknown user profile for ${userName}";
+    
 in {
-  imports = defaultProfile ++ additionalProfile;
+  imports = activeProfile;
 }
+
 
