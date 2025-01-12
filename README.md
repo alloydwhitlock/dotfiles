@@ -13,8 +13,9 @@ I have added additional documentation for how to use Nix for installing home-man
 You either need to have a working Nix (Nix Packages) setup OR something that can manage the dependencies for Nix. I've provided a couple different options for management. Right now, I'm playing with Flox so the Flox version will work.
 
 
-### Option 1: Install Nix (Standard Setup)
+### Option 1: Nix
 
+*Note: Not tested, so leave a PR if it doesn't work*
 
 1. First, ensure you have Nix installed. If not, install it:
 ```bash
@@ -47,30 +48,18 @@ home-manager --version
 
 1. Visit [Flox Installation Guide](https://flox.dev/docs/install-flox/) and follow the installation instructions for your operating system.
 
-2. After installation, add Flox to your `.bashrc`:
+2. After installation, activate Flox`:
 ```bash
-# Enable Flox
-eval $(flox activate)
+# Activate Flox
+flox activate
 ```
 
-3. Restart your shell or source your `.bashrc`:
-```bash
-source ~/.bashrc
-```
-
-4. Pulling Configuration via Floxhub (optional)
+3. Pulling Configuration via Floxhub (optional)
 
 To use the Flox configuration from FloxHub, you can pull it directly using the following command:
 
 ```bash
 flox pull alloydwhitlock/default
-```
-
-5. Install Home Manager
-
-With Flox installed, install home-manager using your default environment:
-```bash
-flox install home-manager
 ```
 
 ## Configuration Structure
@@ -105,47 +94,11 @@ The configuration supports multiple profiles:
 
 ### Switching Profiles
 
-To switch between profiles, use the `HM_PROFILE` environment variable before running home-manager:
-
-For normal use:
-```bash
-HM_PROFILE=default home-manager switch
-```
-
-For work profile:
-```bash
-HM_PROFILE=work home-manager switch
-```
-
-To make this easier, you can add these as aliases to your shell configuration:
-
-```bash
-alias hm-default='HM_PROFILE=default home-manager switch'
-alias hm-work='HM_PROFILE=work home-manager switch'
-```
-
-You can also set it permanently in your shell configuration or use environment detection:
-
-```bash
-# Add to your .bashrc or .zshrc
-export HM_PROFILE="default"
-
-# Check if home directory named/contains "adamwhitlock" or has .work file
-if [[ "$HOME" == *"adamwhitlock"* ]] || [ -f "$HOME/.work" ]; then
-    export HM_PROFILE="work"
-fi
-```
-
-### Profile Detection
-
-To verify which profile is active:
-```bash
-echo $HM_PROFILE
-```
+There's no need to switch profiles anymore. It will simply detect the profile based on the home path. 
 
 ## Usage
 
-### First Time Setup
+### First Time Setup (Not Using Flox)
 
 1. Clone this repository
 ```bash
@@ -194,13 +147,6 @@ home-manager build
 3. **Show trace for errors**:
 ```bash
 home-manager switch --show-trace
-```
-
-### Profile Detection
-
-To verify which profile is active:
-```bash
-echo $HM_PROFILE
 ```
 
 ## Notes
