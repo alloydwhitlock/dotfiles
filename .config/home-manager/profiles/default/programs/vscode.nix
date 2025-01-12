@@ -1,4 +1,4 @@
-{config, pkgs, ...}: {
+{config, pkgs, lib, ...}: {
   nixpkgs.config.allowUnfree = true;  # Enable nonfree packages
 
   programs.vscode = {
@@ -52,11 +52,6 @@
     };
 
     extensions = with pkgs.vscode-extensions; [
-      # Python
-      ms-python.python
-      ms-python.vscode-pylance
-      ms-python.debugpy
-
       # Go
       golang.go
 
@@ -73,7 +68,11 @@
 
       # Nord theme
       arcticicestudio.nord-visual-studio-code
+    ] ++ lib.optionals (pkgs.stdenv.hostPlatform.system != "aarch64-linux") [
+      # Extensions not supported on aarch64-linux
+      ms-python.python
+      ms-python.vscode-pylance
+      ms-python.debugpy
     ];
   };
 }
-
