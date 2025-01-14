@@ -8,5 +8,6 @@
   imports = [
     ./packages.nix
     ./programs/git.nix
+    ../default/programs/zsh.nix
   ];
 }
