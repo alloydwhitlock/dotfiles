@@ -2,8 +2,8 @@
 
 {
 
-  home.username = "adamwhitlock";
-  home.homeDirectory = "/Users/adamwhitlock";
+  home.username = "whitlock";
+  home.homeDirectory = "/Users/whitlock";
 
   imports = [
     ./packages.nix
