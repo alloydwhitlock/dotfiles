@@ -80,6 +80,8 @@ fi
 # Source local zshrc if it exists (for machine-specific settings)
 [ -f ~/.zshrc_local ] && source ~/.zshrc_local
 
+# Use .local bin folder path
+export PATH="$HOME/.local/bin:$PATH"
 
 # Aliases
 alias cleanrepo="git reset --hard origin/master"
