@@ -1,162 +1,108 @@
 # dotfiles
 
-This repository contains Adam Whitlock's personal home-manager configuration for managing dotfiles and system configurations. 
+Collection of various configuration files used by Adam Whitlock.
 
-## Package Management
+## Installation
 
-This configuration uses Flox for package management rather than home-manager's package management capabilities. While home-manager handles dotfiles and program configurations, all package installation and updates are managed through Flox commands (`flox install`, `flox update`, etc.). This separation provides more direct control over package management and allows for easier package state management across different systems. Home-manager's package management is intentionally disabled in this setup - if you need to install a new package, use `flox install package-name` instead of adding it to home-manager's configuration. 
+1. Clone the dotfiles repository
+   ```
+   git clone https://github.com/alloydwhitlock/dotfiles.git ~/.config/dotfiles
+   ```
 
-I have added additional documentation for how to use Nix for installing home-manager. With that stated, nothing prevents you from using these configurations and Nix packages anyway you want.
+2. Install [GNU Stow](https://www.gnu.org/software/stow/)
+   
+   On Mac OS X, using [Homebrew](https://brew.sh) to install GNU Stow is probably the easiest option
+   ```
+   brew install stow
+   ```
 
-## Prerequisites
+3. Run `stow` commands to create symlinks for each of the folders containing dotfiles
 
-You either need to have a working Nix (Nix Packages) setup OR something that can manage the dependencies for Nix. I've provided a couple different options for management. Right now, I'm playing with Flox so the Flox version will work.
+### GNU Stow Example
 
-
-### Option 1: Nix
-
-*Note: Not tested, so leave a PR if it doesn't work*
-
-1. First, ensure you have Nix installed. If not, install it:
-```bash
-sh <(curl -L https://nixos.org/nix/install) --daemon
+```
+$ cd ~/.config/dotfiles
+$ stow -t ~ -vv tmux
+LINK: .tmux.conf => .config/dotfiles/tmux/.tmux.conf
 ```
 
-2. Add the home-manager channel:
-```bash
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-```
-
-3. Install home-manager:
-```bash
-nix-shell '' -A install
-```
-
-4. Restart your shell or source your profile:
-```bash
-. $HOME/.nix-profile/etc/profile.d/nix.sh
-```
-
-5. Verify the installation:
-```bash
-home-manager --version
-```
-
-
-### Option 2: Install Flox (If You Use/Love Flox)
-
-1. Visit [Flox Installation Guide](https://flox.dev/docs/install-flox/) and follow the installation instructions for your operating system.
-
-2. After installation, activate Flox`:
-```bash
-# Activate Flox
-flox activate
-```
-
-3. Pulling Configuration via Floxhub (optional)
-
-To use the Flox configuration from FloxHub, you can pull it directly using the following command:
+### Stowing Everything
 
 ```bash
-flox pull alloydwhitlock/default
+cd ~/.config/dotfiles
+stow -t ~ bash git tmux vim zsh alacritty ssh vscode
 ```
 
-## Configuration Structure
-
-Here's the basic configuration structure, showing how it's setup. This may differ over time from the actual structure:
-
-```
-~/.config/home-manager/
-├── home.nix                 # Main configuration entry point
-└── profiles
-    ├── default.nix          # Profile selection logic
-    ├── default/             # Base profile (always loaded)
-    │   ├── default.nix
-    │   ├── packages.nix
-    │   └── programs/
-    │       ├── alacritty.nix
-    │       ├── git.nix
-    │       ├── tmux.nix
-    │       └── vim.nix
-    └── work/                # Work profile (adds to defaults unless specified)
-        ├── default.nix
-        ├── packages.nix
-        └── programs/
-            └── work-specific.nix
+Or just stow everything at once:
+```bash
+stow -t ~ */
 ```
 
-## Profile Management
+## Repository Structure
 
-The configuration supports multiple profiles:
-- **default**: Base configuration used everywhere
-- **work**: Additional work-specific configurations, like Git config
+Each directory is a "stow package" containing related dotfiles:
 
-### Switching Profiles
-
-There's no need to switch profiles anymore. It will simply detect the profile based on the home path. 
+```
+~/.config/dotfiles/
+├── alacritty/     # Terminal emulator config
+├── bash/          # Bash shell (.bashrc, .bash_profile)
+├── git/           # Git configuration
+├── ssh/           # SSH keys and config
+├── tmux/          # Tmux configuration
+├── vim/           # Vim configuration
+├── vscode/        # VSCodium/VS Code settings
+└── zsh/           # Zsh shell configuration
+```
 
 ## Usage
 
-### First Time Setup (Not Using Flox)
+### Adding New Dotfiles
 
-1. Clone this repository
+1. Create a directory for the program
+2. Move your dotfile into it (preserving path from `$HOME`)
+3. Stow it
+
+Example:
 ```bash
-git clone <repository-url> ~/.config/dotfiles
+mkdir -p ~/.config/dotfiles/newprogram
+mv ~/.newprogramrc ~/.config/dotfiles/newprogram/.newprogramrc
+cd ~/.config/dotfiles
+stow -t ~ newprogram
 ```
 
-2. Create a symlink for home-manager
+### Removing Stowed Configurations
 
 ```bash
-ln -s "$HOME/.config/dotfiles/.config/home-manager" "$HOME/.config/home-manager"
+cd ~/.config/dotfiles
+stow -t ~ -D vim  # Unstow vim
 ```
 
-3. Initial home-manager build & activation:
+### Updating Configurations
+
+Just edit the files directly—they're symlinked:
 ```bash
-home-manager switch
+vim ~/.vimrc  # Edits ~/.config/dotfiles/vim/.vimrc
 ```
 
-### Making Changes
+## Machine-Specific Settings
 
-1. Edit configuration files as needed
-2. Apply changes:
-```bash
-home-manager switch
-```
+For settings that shouldn't be in version control:
+- **Bash**: Create `~/.bashrc_local`
+- **Zsh**: Create `~/.zshrc_local`
 
-### Adding New Programs
+These files are automatically sourced if they exist.
 
-1. Create a new configuration file in the appropriate profile directory
-2. Import it in the profile's `default.nix`
-3. Apply changes with `home-manager switch`
+## Contributing
 
-## Troubleshooting
-
-### Common Issues
-
-1. **Files already exist**: Use backup flag
-```bash
-home-manager switch -b backup
-```
-
-2. **Check configuration**:
-```bash
-home-manager build
-```
-
-3. **Show trace for errors**:
-```bash
-home-manager switch --show-trace
-```
-
-## Notes
-
-- The default profile is always loaded
-- Work profile adds to (doesn't replace) the default profile
-- Configuration changes require running `home-manager switch`
-- Keep backups of important configurations before major changes
+1. Fork the repository
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request
 
 ## History
+
+* 2025.11.16 - Migrated back to GNU Stow from home-manager
 * 2024.11.29 - Massive rewrite, removed all original configuration files, pushed into using Home Manager (Nix) 
 * 2021.01.18 - Added .bashrc options for modernizing (Pop!\_OS compatability), .vimrc cleanup. Removed unused Molokai theme, added Alacritty config
 * 2018.04.22 - Removed Vundle plugin support from dotfiles, added show/hide status for .tmux.conf, notes for using GNU Stow (thanks to [Kyle Reid](https://github.com/kreid/dotfiles) for the inspiration)
@@ -166,3 +112,7 @@ home-manager switch --show-trace
 * 2016.09.08 - Modified Bash prompt to include relative directory path
 * 2016.08.10 - Added Molokai theme for Vim
 * 2016.07.17 - Creation and initial commit of basic dotfiles
+
+## License
+
+GNU General Public License v3 (GPLv3)

@@ -1,0 +1,23 @@
+# Stow local ignore file
+# These files/directories will not be symlinked
+
+# Git files
+\.git
+\.gitignore
+\.gitmodules
+
+# Documentation
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Stow
+\.stow-local-ignore
+
+# Editor files
+.*~
+\#.*\#
+\.#.*
+
+# macOS
+\.DS_Store
