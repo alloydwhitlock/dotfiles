@@ -7,11 +7,11 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 # Default editor is vim
-export EDITOR=vim 
+export EDITOR=vim
 
 # Default git editor is vim
-export GIT_EDITOR=vim  
-  
+export GIT_EDITOR=vim
+
 
 # Source Homebrew if installed
 if [ -f "/opt/homebrew/bin/brew" ]; then
@@ -21,6 +21,8 @@ fi
 # Ensure ZSH_CUSTOM is set for custom plugins
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CUSTOM="$ZSH/custom"
+
+ZSH_THEME="robbyrussell"
 
 # Configure oh-my-zsh plugins
 plugins=(git branch docker colorize)
