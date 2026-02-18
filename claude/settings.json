@@ -1,25 +1,24 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "attribution": {
     "commit": "",
     "pr": ""
   },
-
   "statusLine": {
     "type": "command",
     "command": "bash /Users/whitlock/.claude/statusline-command.sh"
   },
-
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "double-shot-latte@superpowers-marketplace": true,
+    "frontend-design@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "github@claude-plugins-official": true
+  },
   "teammateMode": "tmux",
   "preferences": {
     "tmuxSplitPanes": true
-  },
-
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
-    "double-shot-latte@superpowers-marketplace": true
-  },
-
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   }
 }

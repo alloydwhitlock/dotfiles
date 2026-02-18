@@ -1,0 +1,44 @@
+# Ghostty Configuration
+
+# Font
+font-family = Monaco
+font-size = 12
+
+# Theme - Nord
+theme = nord
+
+# Terminal compatibility - use xterm-256color so SSH to remote
+# machines works correctly (they won't have ghostty terminfo)
+term = xterm-256color
+
+# Shell
+command = /bin/zsh
+
+# Window
+window-padding-x = 10
+window-padding-y = 10
+window-decoration = true
+window-title-font-family = Monaco
+
+# Appearance
+background-opacity = 0.95
+minimum-contrast = 1.0
+
+# Scrollback
+scrollback-limit = 50000
+
+# Cursor
+cursor-style = block
+cursor-style-blink = true
+
+# Mouse
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+
+# macOS specific
+macos-titlebar-style = native
+macos-option-as-alt = false
+window-save-state = always
+
+# Clipboard
+clipboard-paste-protection = true
