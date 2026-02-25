@@ -85,8 +85,42 @@ fi
 # Use .local bin folder path
 export PATH="$HOME/.local/bin:$PATH"
 
+# Functions
+
+tmux() {
+  local default_session="whitlock"
+
+  # No args: attach/create default
+  if [ "$#" -eq 0 ]; then
+    command tmux attach -t "$default_session" 2>/dev/null \
+      || command tmux new -s "$default_session"
+    return
+  fi
+
+  # If the first arg looks like a tmux subcommand (or an option), pass through
+  case "$1" in
+    -*|attach|a|new|new-session|ls|list-sessions|kill-session|kill-server|detach|rename-session|switch-client|has-session|display-message|show-options|set-option|source-file)
+      command tmux "$@"
+      return
+      ;;
+  esac
+
+  # Single arg that isn't a subcommand: treat it as a session name
+  if [ "$#" -eq 1 ]; then
+    if command tmux has-session -t "$1" 2>/dev/null; then
+      command tmux attach -t "$1"
+    else
+      command tmux new -s "$1"
+    fi
+    return
+  fi
+
+  # Anything else: just pass through
+  command tmux "$@"
+}
+
 # Aliases
 alias cleanrepo="git reset --hard origin/master"
 alias revertcommit="git reset --soft HEAD~1"
-alias tmux="tmux attach -t whitlock || tmux new -s whitlock"
+
 export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
