@@ -1,23 +1,27 @@
 {
   "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING": "1",
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1"
   },
   "attribution": {
     "commit": "",
     "pr": ""
   },
+  "model": "opusplan",
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/whitlock/.claude/statusline-command.sh"
+    "command": "bash ~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
-    "frontend-design@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true
   },
+  "effortLevel": "medium",
   "skipDangerousModePermissionPrompt": true,
+  "voiceEnabled": true,
   "teammateMode": "tmux",
   "preferences": {
     "tmuxSplitPanes": true
